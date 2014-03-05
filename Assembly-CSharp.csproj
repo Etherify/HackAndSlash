@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{97E8D58A-24FD-5A1B-10FE-B32B6082DA6A}</ProjectGuid>
+	<ProjectGuid>{8D052A18-5788-7729-C84C-C33964DB0211}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -47,23 +47,33 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Character Classes\Attribute.cs" />
+     <Compile Include="Assets\Scripts\Character Classes\BaseCharacter.cs" />
      <Compile Include="Assets\Scripts\Character Classes\BaseStat.cs" />
+     <Compile Include="Assets\Scripts\Character Classes\CharacterGenerator.cs" />
+     <Compile Include="Assets\Scripts\Character Classes\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\Character Classes\ModifiedStat.cs" />
+     <Compile Include="Assets\Scripts\Character Classes\PlayerCharacter.cs" />
      <Compile Include="Assets\Scripts\Character Classes\Skill.cs" />
      <Compile Include="Assets\Scripts\Character Classes\Vital.cs" />
-     <Compile Include="Assets\Scripts\EnemyAI.cs" />
      <Compile Include="Assets\Scripts\EnemyAttack.cs" />
      <Compile Include="Assets\Scripts\EnemyHealth.cs" />
+     <Compile Include="Assets\Scripts\GameMaster.cs" />
+     <Compile Include="Assets\Scripts\GameSettings.cs" />
      <Compile Include="Assets\Scripts\PlayerAttack.cs" />
      <Compile Include="Assets\Scripts\PlayerHealth.cs" />
      <Compile Include="Assets\Scripts\Targeting.cs" />
+     <Compile Include="Assets\skydome\Sun.cs" />
+     <Compile Include="Assets\skydome\skydomeScript2.cs" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
+     <None Include="Assets\Necromancer GUI\Kingthings.txt" />
+     <None Include="Assets\Necromancer GUI\Readme.txt" />
+     <None Include="Assets\skydome\aScattering2.0.shader" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{EEB657DE-C7D2-7852-F946-4D5F3DF4B57D}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{0CA071B1-7743-267A-F51D-66FBDFA909A3}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{C9D62EC4-80FC-65A0-356A-7419DFAF0FA2}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
+      <Project>{F2CB2351-1A53-3BB0-91E9-EAFC987932B7}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

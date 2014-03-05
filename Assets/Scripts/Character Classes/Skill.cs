@@ -1,6 +1,4 @@
-﻿
-
-public class Skill : ModifiedStat
+﻿public class Skill : ModifiedStat
 {
     private bool _known;
 
@@ -18,15 +16,16 @@ public class Skill : ModifiedStat
         set { _known = value; }
 
     }
+}
 
     public enum SkillName
     {
-        Melee_Offence,
-        Melee_Defence,
-        Ranged_Offence,
-        Ranged_Defence,
-        Magic_Offence,
+        Melee_Offense,
+        Melee_Defense,
+        Ranged_Offense,
+        Ranged_Defense,
+        Magic_Offense,
         Magic_Defense
     }
 
-}
+

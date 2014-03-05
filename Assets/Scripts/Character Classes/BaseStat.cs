@@ -1,5 +1,4 @@
-﻿
-public class BaseStat {
+﻿public class BaseStat {
 
     private int _baseValue;                     //the base value of this stat
     private int _buffValue;                     //the amount of a buff to this stat

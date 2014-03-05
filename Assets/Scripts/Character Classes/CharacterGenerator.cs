@@ -31,20 +31,26 @@ public class CharacterGenerator : MonoBehaviour
     //starting Y position of stats
     private int statStartingPosition = 40;
 
-    //starting x positon of points left
-    private int startingStatPosition = 250;
+    //style only affects one C# command Skin will be for all the buttons/labels in a single scene.  
+    public GUIStyle myStyle;
+    public GUISkin mySkin;
 
+    public GameObject playerPrefab;
 
-
-
-
-    
 
     // Use this for initialization
     void Start()
     {
-        _toon = new PlayerCharacter();
-        _toon.Awake();
+        GameObject pc = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+        pc.name = "pc";
+
+        _toon = pc.GetComponent<PlayerCharacter>();
+
+
+        //not needed do to the changes adding the game object and pc.name
+
+        //_toon = new PlayerCharacter();
+        //_toon.Awake();
 
         pointsLeft = STARTING_POINTS;
 
@@ -72,13 +78,18 @@ public class CharacterGenerator : MonoBehaviour
         DisplayAttributes();
         DisplayVitals();
         DisplaySkills();
+        
+        if(_toon.PlayerName=="" || pointsLeft!=0)
+        DisplayCreateLabel();
+        else
+        DisplayCreateButton();
 
     }
 
     private void DisplayName()
     {
         GUI.Label(new Rect(10, 10, 50, 25), "Name");
-        _toon.Name = GUI.TextField(new Rect(65, 10, 100, 25), _toon.Name);
+        _toon.PlayerName = GUI.TextField(new Rect(65, 10, 100, 25), _toon.PlayerName);
 
     }
 
@@ -90,7 +101,7 @@ public class CharacterGenerator : MonoBehaviour
                                 statStartingPosition + (cnt * LINEHEIGHT),  //y
                                 STAT_LABEL_WIDTH,                           //width
                                 LINEHEIGHT),                                //height 
-                                
+
                                 ((AttributeName)cnt).ToString());
 			GUI.Label(new Rect(STAT_LABEL_WIDTH + OFFSET, statStartingPosition + (cnt * LINEHEIGHT), BASEVALUE_LABEL_WIDTH, LINEHEIGHT), _toon.GetPrimaryAttribute(cnt).AdjustedBaseValue.ToString());
 
@@ -171,6 +182,45 @@ public class CharacterGenerator : MonoBehaviour
             STAT_LABEL_WIDTH, 
             LINEHEIGHT), 
             "Points Left:" + pointsLeft.ToString());
+    }
+
+    //no way to disable the create button until users use all points
+    private void DisplayCreateLabel()
+    {
+        GUI.Label(new Rect((Screen.width / 2 - 50),
+        statStartingPosition + 10 * LINEHEIGHT,
+        200,
+        LINEHEIGHT)
+            , "Enter Name or Add Points", "Button");
+    }
+
+    //displays create button and saves
+    private void DisplayCreateButton()
+    {
+        if(GUI.Button(new Rect((Screen.width/2 - 50), 
+                statStartingPosition + 10 * LINEHEIGHT, 
+                100, 
+                LINEHEIGHT) 
+                ,"Create"))
+        {
+            //change the cur value of the vitals to the max modified value of the vital
+            UpdateCurVitalValues();
+
+            GameSettings gsScript = GameObject.Find("__Game Settings").GetComponent<GameSettings>();
+
+            //chage the cur value of the vital to the max modified value of that vital
+
+            gsScript.SaveCharacterData();
+
+            Application.LoadLevel("NoobZone");
+        }
+    }
+
+
+    private void UpdateCurVitalValues()
+    {
+        for (int cnt = 0; cnt < Enum.GetValues(typeof(VitalName)).Length; cnt++)
+            _toon.GetVital(cnt).CurValue = _toon.GetVital(cnt).AdjustedBaseValue;
     }
 
 }

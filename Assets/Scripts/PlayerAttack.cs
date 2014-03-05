@@ -54,11 +54,11 @@ public class PlayerAttack : MonoBehaviour {
         //call new instance of Enemny health
         EnemyHealth eh = (EnemyHealth)target.GetComponent("EnemyHealth");
 
-        Debug.Log(distance);
+        //Debug.Log(distance);
 
         //should return between 1 and -1, 1 is in front, -1 is behind
 
-        Debug.Log(direction);
+        //Debug.Log(direction);
 
 
         if (distance <= 2.5f)

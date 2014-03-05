@@ -1,27 +1,31 @@
-﻿
-
-public class Attribute : BaseStat 
+﻿public class Attribute : BaseStat
 {
-    public Attribute()
+    private string _attname;
+
+
+	public Attribute()
+	{
+		ExpToLevel = 50;
+		LevelModifier = 1.05f;
+        _attname = "";
+	}
+
+    public string AttName
     {
-        ExpToLevel = 50;
-        LevelModifier = 1.05f;
+        get { return _attname; }
+        set { _attname = value; }
     }
 
-    public enum AttributeName
-    {
-        Might,
-        Constitution,
-        Nimbleness,
-        Speed, 
-        Concentration,
-        Willpower,
-        Charisma
-    }
+}
 
-
-
-
-
-
+public enum AttributeName 
+{
+	Might,
+	Constitution,
+	Nimbleness,
+	Speed,
+	Concentration,
+	Willpower,
+    Charisma
+	
 }

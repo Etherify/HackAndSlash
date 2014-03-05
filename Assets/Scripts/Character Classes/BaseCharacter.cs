@@ -34,7 +34,7 @@ public class BaseCharacter : MonoBehaviour {
     }
 
 
-    public string Name
+    public string PlayerName
     {
         get {return _name;}
         set {_name = value;}
@@ -56,7 +56,10 @@ public class BaseCharacter : MonoBehaviour {
     private void SetupPrimaryAttributes()
     {
         for (int cnt = 0; cnt < _primaryAttribute.Length; cnt++)
-            _primaryAttribute[cnt] = new Attribute();      
+        {
+            _primaryAttribute[cnt] = new Attribute();
+            _primaryAttribute[cnt].AttName = ((AttributeName)cnt).ToString();
+        }
     }
 
     private void SetupVitals()
